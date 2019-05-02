@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ResidentEvil.Models.Entities.clsAnciano>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/lista.css" rel="stylesheet" />
+    <title>Lista</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idAnciano)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreAnciano)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idAnciano)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreAnciano)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.idAnciano })*@
+                <a href="@Url.Action("Edit",new{id=item.idAnciano})">
+                    <img class="imgEditar" src="../imagenes/editar.gif" />
+                </a> |
+                @Html.ActionLink("Details", "Details", new {  id=item.idAnciano  }) |
+                @*@Html.ActionLink("Delete","Delete", new { id = item.idAnciano }, new { @id = "eliminar" })*@
+                <a href="@Url.Action("Delete",new{id=item.idAnciano})">
+                    <img class="imgEliminar" src="../imagenes/eliminar.png" />
+                </a>
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

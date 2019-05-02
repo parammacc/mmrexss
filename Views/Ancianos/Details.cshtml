@@ -1,0 +1,37 @@
+﻿@model ResidentEvil.Models.Entities.clsAnciano
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <fieldset>
+        <legend>clsAnciano</legend>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.idAnciano)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.idAnciano)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.nombreAnciano)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.nombreAnciano)
+        </div>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new {  id=Model.idAnciano }) |
+        @Html.ActionLink("Back to List", "Lista")
+    </p>
+</body>
+</html>

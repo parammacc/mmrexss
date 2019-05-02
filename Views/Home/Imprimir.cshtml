@@ -1,0 +1,46 @@
+﻿@model ResidentEvil.Models.Modelo_para_las_vistas.clsMedicionViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Imprimir</title>
+</head>
+<body>
+    <div>
+        <h2>Bienvenido a Resident Evil</h2>
+        <h3>La residencia de sus sueños...eternos...</h3>
+        <br />
+        @Html.LabelFor(x=>x.fecha) @Model.fecha.ToShortDateString()
+        <br /><br />
+        @Html.LabelFor(x=>x.tramo):
+        @switch (@Model.tramo)
+        {    
+            case 'm': @Html.Label("Mañana") break;
+            case 't': @Html.Label("Tarde") break;
+            case 'n': @("Noche") break;
+        }
+        <br /><br />
+        @*for(int i=0; i<@Model.listadoMediciones.Count;)
+        @Model.listadoMediciones.ToString()*@
+        @foreach (var temperaturas in @Model.listadoMediciones)
+        {
+            
+            if (temperaturas.temperatura == 0)
+            {
+                 <p>@temperaturas.nombre Temperatura No Registrada</p>
+            }
+            else
+            {
+                <p>@temperaturas.nombre @temperaturas.temperatura</p>
+            }
+            
+        }
+    </div>
+</body>
+</html>

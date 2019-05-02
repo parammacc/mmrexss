@@ -1,0 +1,52 @@
+﻿@model ResidentEvil.Models.Entities.clsAnciano
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+    
+        <fieldset>
+            <legend>clsAnciano</legend>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.idAnciano)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.idAnciano)
+                @Html.ValidationMessageFor(model => model.idAnciano)
+            </div>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.nombreAnciano)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.nombreAnciano)
+                @Html.ValidationMessageFor(model => model.nombreAnciano)
+            </div>
+    
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Lista")
+    </div>
+</body>
+</html>

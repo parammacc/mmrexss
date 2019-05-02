@@ -1,0 +1,53 @@
+﻿@model ResidentEvil.Models.Modelo_para_las_vistas.clsMedicionViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    @using(Html.BeginForm())
+    {
+        <div>
+            <p>FECHA: @Model.fecha.ToShortDateString()</p>
+        <br />
+        <p>
+            @Html.LabelFor(x=>x.tramo)
+            @*@Html.HiddenFor(x=>x.tramo)*@
+        </p>
+            <select name="tramo" id="tramo">
+                <option>Elija un tramo horario</option>
+                <option value="m">Mañana</option>
+                <option value="t">Tarde</option>
+                <option value="n">Noche</option>
+            </select>
+        <br />
+        <p>
+
+            @for (int i = 0; i < Model.listadoMediciones.Count; i++)
+            {
+                @Html.LabelFor(x=>x.listadoMediciones[i].nombre,Model.listadoMediciones[i].nombre)
+                @Html.HiddenFor(x=>x.listadoMediciones[i].nombre)
+                
+               
+                @Html.TextBoxFor(x=>x.listadoMediciones[i].temperatura)
+                @Html.ValidationMessageFor(x=>x.listadoMediciones[i].temperatura)
+                <br />
+            }                                                
+        </p>
+            <p>
+            <input type="submit" value="Enviar" />
+                </p>
+            @Html.ActionLink("Ir a administrar ancianos","Lista","Ancianos")
+    </div>
+    }
+    
+</body>
+</html>
